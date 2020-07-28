@@ -16,16 +16,12 @@ function App() {
         videoDescription={"O que é front-end? Trabalando na área..."}
       />
 
-      <Carousel
-        ignoreFirstVideo
-        category={dados.categorias[0]}
-      />
-
-      
-      <Carousel
-        ignoreFirstVideo
-        category={dados.categorias[0]}
-      />
+      <Carousel ignoreFirstVideo category={dados.categorias[0]} />      
+      <Carousel category={dados.categorias[1]} />
+      <Carousel category={dados.categorias[2]} />     
+      <Carousel category={dados.categorias[3]} />     
+      <Carousel category={dados.categorias[4]} />      
+      <Carousel category={dados.categorias[5]} />
     </div>
   );
 }
