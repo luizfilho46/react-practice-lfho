@@ -36,13 +36,13 @@ function CadastroCategoria () {
                  setCategorias([...categorias, values])
                  setValues({nome: '', descricao: '', cor: ''})
             }}>
-                <FormField value={values.nome} handle={handle} />
+                <FormField type="text" name="nome" value={values.nome} handle={handle} label="Nome da Categoria" />
+                
 
                 <label>Descricao: {values.descricao}</label>
                 <textarea name="descricao" type="text" value={values.descricao} onChange={handle}></textarea>
 
-                <label>Cor: {values.cor}</label>
-                <input name="cor" type="color" value={values.cor} onChange={handle}/>
+                <FormField type="color" name="cor" value={values.nome} handle={handle} label="Cor" />
 
                 <button>Cadastrar</button>
             </form>
