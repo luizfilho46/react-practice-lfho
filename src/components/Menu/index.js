@@ -11,6 +11,7 @@ function Menu () {
             <Link to="/">
                 <img className="Logo" src={Logo} alt="LuizFlilho" />
             </Link>
+            <p>Créditos aos autores dos vídeos.</p>
             <Button className="ButtonLink" as={Link} to="/cadastro/video">Novo Vídeo</Button>
         </nav>
     )
