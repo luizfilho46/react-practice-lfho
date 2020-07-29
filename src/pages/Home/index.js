@@ -13,7 +13,7 @@ function Home() {
       <BannerMain
         videoTitle={dados.categorias[0].videos[0].titulo}
         url={dados.categorias[0].videos[0].url}
-        videoDescription={"O que é front-end? Trabalando na área..."}
+        videoDescription={"Conteúdo avançado sobre programação e arquitetura..."}
       />
 
       <Carousel ignoreFirstVideo category={dados.categorias[0]} />      

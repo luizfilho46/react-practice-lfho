@@ -1,33 +1,33 @@
 {
   "categorias": [
     {
-      "titulo": "Front End",
-      "link": "https://www.alura.com.br/formacao-front-end",
-      "cor": "#6BD1FF",
+      "titulo": "Arquitetura de Software",
+      "link": "https://www.eximiaco.tech/pt/category/arquitetura/",
+      "cor": "#333333",
       "link_extra": {
-        "text": "Formação de Front End na Alura",
-        "url": "https://www.alura.com.br/cursos-online-front-end"
+        "text": "Artigos do Elemar Jr. - Conteúdo Técnico e Avançado",
+        "url": "https://www.eximiaco.tech/pt/blog/"
       },
       "videos": [
         {
-          "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-          "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
+          "titulo": "Descomplicando Event Sourcing",
+          "url": "https://www.youtube.com/watch?v=f4GolIiNIvc"
         },
         {
-          "titulo": "SEO com React",
-          "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+          "titulo": "Descomplicando CQRS",
+          "url": "https://www.youtube.com/watch?v=yd6V4w19iJU"
         },
         {
-          "titulo": "Componentização com VanillaJS #AluraMais",
-          "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+          "titulo": "Fundamentos de Arquitetura de Software - Parte 07 - Custos, Complexidade e Acoplamento",
+          "url": "https://www.youtube.com/watch?v=V2yW_c22A4A"
         },
         {
-          "titulo": "Pare de chutar e aprenda a display: inline #01",
-          "url": "https://www.youtube.com/watch?v=5PS6ku8NzIE"
+          "titulo": "Fundamentos de Arquitetura de Software - Parte 06 - Documentação para Arquitetura",
+          "url": "https://www.youtube.com/watch?v=hCDSzBX7slQ"
         },
         {
-          "titulo": "Template String: Interpolando strings com JavaScript #AluraMais",
-          "url": "https://www.youtube.com/watch?v=ORI_HTXaIw0"
+          "titulo": "Fundamentos de Arquitetura de Software - Parte 05 - A lei de Conway",
+          "url": "https://www.youtube.com/watch?v=3vC2vNwPoo8"
         },
         {
           "titulo": "Qual é a melhor linguagem de programação? #HipstersPontoTube",
