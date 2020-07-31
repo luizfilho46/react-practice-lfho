@@ -1,67 +1,78 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import PageDefault from '../../../components/PageDefault'
-import FormField from '../../../components/FormField'
+/* eslint linebreak-style: ["error", "windows"] */
 
-function CadastroCategoria () {
-    
-    const valoresIniciais = {
-        nome: '',
-        descricao: '',
-        cor: '#000FFF'
-    }
-    const [categorias, setCategorias] = useState([])
+import React, { useEffect, useState } from 'react';
 
-    const [values, setValues] = useState(valoresIniciais)
+import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
+import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
-    function handle (e) {
-        const { name, value } = e.target
-        setValue(name, value)
-    }
+function CadastroCategoria() {
+  const valoresIniciais = {
+    nome: '',
+    descricao: '',
+    cor: '',
+  };
+  const [categorias, setCategorias] = useState([]);
 
+  const [values, setValues] = useState(valoresIniciais);
 
-    function setValue (chave, valor) {
-        setValues({
-            ...values,
-            [chave]: valor
-        })
-    }
+  function handle(e) {
+    const { name, value } = e.target;
+    // eslint-disable-next-line no-use-before-define
+    setValue(name, value);
+  }
 
-    return (
-        <PageDefault>
-            <h1>Cadastro de Categoria</h1>
+  function setValue(chave, valor) {
+    setValues({
+      ...values,
+      [chave]: valor,
+    });
+  }
 
-            <form style={{ background: values.cor }} onSubmit={function handleSubmit (e) {
-                 e.preventDefault()
-                 setCategorias([...categorias, values])
-                 setValues({nome: '', descricao: '', cor: ''})
-            }}>
-                <FormField type="text" name="nome" value={values.nome} handle={handle} label="Nome da Categoria" />
-                
+  useEffect(() => {
+    const URL = 'http://localhost:3000/categorias';
 
-                <label>Descricao: {values.descricao}</label>
-                <textarea name="descricao" type="text" value={values.descricao} onChange={handle}></textarea>
+    fetch(URL).then((response) => response.json()).then((response) => setCategorias([...response]));
+  }, []);
 
-                <FormField type="color" name="cor" value={values.nome} handle={handle} label="Cor" />
+  return (
+    <PageDefault>
+      <h1>Cadastro de Categoria</h1>
 
-                <button>Cadastrar</button>
-            </form>
+      <form
+        onSubmit={function handleSubmit(e) {
+          e.preventDefault();
+          setCategorias([...categorias, values]);
+          setValues({ nome: '', descricao: '', cor: '' });
+        }}
+      >
+        <FormField type="text" name="nome" value={values.nome} onChange={handle} label="Nome da Categoria" />
+        <FormField type="textarea" name="descricao" value={values.descricao} onChange={handle} label="Descrição" />
+        <FormField type="color" name="cor" value={values.cor} onChange={handle} label="Cor" />
 
-            <ul>
-                { categorias.map( function (item, indice) {
-                    return (
-                        <li key={`${item.nome}${indice}`}>
-                            {item.nome}
-                        </li>
-                    )
-                }) }
-            </ul>
+        <Button>Cadastrar</Button>
+      </form>
 
-            <Link to="/">
-                Ir para a Home
-            </Link>
-        </PageDefault>
-    )
+      { categorias.length === 0 && (
+      <div>
+        Loading...
+      </div>
+      )}
+
+      <ul>
+        {categorias.map((item) => (
+          <li key={item.nome}>
+            {item.nome}
+          </li>
+        ))}
+      </ul>
+
+      <Link to="/">
+        Ir para a Home
+      </Link>
+    </PageDefault>
+  );
 }
 
-export default CadastroCategoria
+export default CadastroCategoria;
