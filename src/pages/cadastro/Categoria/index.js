@@ -1,11 +1,11 @@
 /* eslint linebreak-style: ["error", "windows"] */
-
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -15,20 +15,7 @@ function CadastroCategoria() {
   };
   const [categorias, setCategorias] = useState([]);
 
-  const [values, setValues] = useState(valoresIniciais);
-
-  function handle(e) {
-    const { name, value } = e.target;
-    // eslint-disable-next-line no-use-before-define
-    setValue(name, value);
-  }
-
-  function setValue(chave, valor) {
-    setValues({
-      ...values,
-      [chave]: valor,
-    });
-  }
+  const { clear, handle, values } = useForm(valoresIniciais);
 
   useEffect(() => {
     const URL = 'http://localhost:8080/categorias';
@@ -44,7 +31,7 @@ function CadastroCategoria() {
         onSubmit={function handleSubmit(e) {
           e.preventDefault();
           setCategorias([...categorias, values]);
-          setValues({ nome: '', descricao: '', cor: '' });
+          clear({ nome: '', descricao: '', cor: '' });
         }}
       >
         <FormField type="text" name="nome" value={values.nome} onChange={handle} label="Nome da Categoria" />
@@ -62,8 +49,8 @@ function CadastroCategoria() {
 
       <ul>
         {categorias.map((item) => (
-          <li key={item.nome}>
-            {item.nome}
+          <li key={item.titulo}>
+            {item.titulo}
           </li>
         ))}
       </ul>
