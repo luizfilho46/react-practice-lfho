@@ -7,9 +7,7 @@ import categorias from '../../repositories/categorias';
 import PageDefault from '../../components/PageDefault';
 
 function Home() {
-  const [dados, setDados] = useState({
-    categorias: [],
-  });
+  const [dados, setDados] = useState([]);
 
   useEffect(() => {
     categorias.getAllWithVideos().then(setDados);
@@ -19,22 +17,22 @@ function Home() {
     <PageDefault paddingAll={0}>
       <Menu />
       {dados.length === 0 && (<div>Loading....</div>)}
-      { dados.length > 0
-        && (
-        <>
-          <BannerMain
-            videoTitle={dados[0].videos[0].titulo}
-            url={dados[0].videos[0].url}
-            videoDescription="Conteúdo avançado sobre programação e arquitetura..."
-          />
-          <Carousel ignoreFirstVideo category={dados[0]} />
-        </>
-        )}
-      { /* <Carousel category={dados.categorias[1]} />
-      <Carousel category={dados.categorias[2]} />
-      <Carousel category={dados.categorias[3]} />
-      <Carousel category={dados.categorias[4]} />
-  <Carousel category={dados.categorias[5]} /> */}
+
+      {dados.map((categoria, indice) => {
+        if (indice === 0) {
+          return (
+            <div key={categoria.id}>
+              <BannerMain
+                videoTitle={categoria.videos[0].titulo}
+                url={categoria.videos[0].url}
+                videoDescription="Conteúdo avançado sobre programação e arquitetura..."
+              />
+              <Carousel ignoreFirstVideo category={categoria} />
+            </div>
+          );
+        }
+        return (<Carousel key={categoria.id} category={categoria} />);
+      })}
     </PageDefault>
   );
 }
